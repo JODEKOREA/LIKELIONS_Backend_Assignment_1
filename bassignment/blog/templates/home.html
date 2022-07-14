@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+      <header>
+        <h2> 전체 글보기  </h2>
+      </header>
+      
+      <div class = "container">
+      {% for blog in blogs%}
+        <div class = "passages">
+          <h4><b>&nbsp;{{ blog.title }}</b></h4>
+          &nbsp;<b>소환사명:</b> {{ blog.writer}}</br>
+          &nbsp;<b>작성시간:</b> {{ blog.pub_date}}</br>
+          &nbsp;<b>내용:</b> {{ blog.summary }}</br>
+          <a href="{% url 'blog:detail' blog.id %}" style="color: lightslategrey">&nbsp;...more</a>
+        </div>
+       
+        
+      {%endfor %}
+      </div>
+
+      <div class="paginator">
+        {% if blogs.has_previous %}
+        <a href="?page=1" style="color: lightslategrey">처음</a>
+        <a href="?page={{blogs.previous_page_number}}" style="color: lightslategrey">이전</a>
+        {% endif %}
+        <span>{{blogs.number}}</span>
+        <span>of</span>
+        <span>{{blogs.paginator.num_pages}}</span>
+        {% if blogs.has_next %}
+        <a href="?page={{blogs.next_page_number}}" style="color: lightslategrey">다음</a>
+        <a href="?page={{blogs.paginator.num_pages}}" style="color: lightslategrey">마지막</a>
+        {% endif %}
+      </div>
+    
+    {% endblock %}
