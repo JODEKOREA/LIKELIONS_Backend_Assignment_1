@@ -105,7 +105,7 @@
         {% if user.is_authenticated %}
         <p> <img src = "{% static 'icon.jpg' %}" alt = "" style = "max-width: 50px; max-height: 50px;">&nbsp; {{user.nickname}}님의 공략을 적어주세요!</p>
         {% else %}
-        <p>  <img src = "{% static 'icon.jpg' %}" alt = "" style = "max-width: 50px; max-height: 50px;">&nbsp;<a href="{% url 'account:login' %}"> 회원가입</a> 후 이용해주세요!</p>
+        <p>  <img src = "{% static 'icon.jpg' %}" alt = "" style = "max-width: 50px; max-height: 50px;">&nbsp;<a href="{% url 'account:signup' %}"> 회원가입</a> 후 이용해주세요!</p>
         {% endif %}
       </footer>
     <br>
